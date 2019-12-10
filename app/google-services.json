@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "146671779217",
+    "firebase_url": "https://lagorta-fcm.firebaseio.com",
+    "project_id": "lagorta-fcm",
+    "storage_bucket": "lagorta-fcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146671779217:android:9eab856ba824721707ee30",
+        "android_client_info": {
+          "package_name": "com.lagorta.fireility"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146671779217-4bm83bee99umujko4jrh6m1pkdf63mqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lagorta.fireility",
+            "certificate_hash": "09db90361932417d1b411af80bfb2f5ac3d24561"
+          }
+        },
+        {
+          "client_id": "146671779217-99lqrr61v565noit25g17umqn9g7j544.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQZWbmVa9Qoitmxf2bBnrucgEv4xahGQ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146671779217-99lqrr61v565noit25g17umqn9g7j544.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
