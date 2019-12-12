@@ -20,7 +20,7 @@ public final class FirebaseHelper {
     private static final String DEFAULT_NOTIFICATION_CHANNEL_ID = "fcm_default_channel";
     private static final String DEFAULT_NOTIFICATION_CHANNEL_NAME = "Weather";
 
-    private void init(final Context context) {
+    public void init(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create channel to show notifications.
             NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
