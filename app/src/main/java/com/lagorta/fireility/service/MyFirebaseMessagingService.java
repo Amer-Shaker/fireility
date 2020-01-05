@@ -1,6 +1,7 @@
 package com.lagorta.fireility.service;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -54,6 +55,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
+            Toast.makeText(this, remoteMessage.getNotification().getBody(), Toast.LENGTH_LONG).show();
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
