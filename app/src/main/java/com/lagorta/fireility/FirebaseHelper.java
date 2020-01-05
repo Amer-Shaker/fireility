@@ -12,13 +12,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import lombok.Builder;
 
-@Builder
+//@Builder
 public final class FirebaseHelper {
     private static final String TAG = "FirebaseHelper";
     private static final String DEFAULT_NOTIFICATION_CHANNEL_ID = "fcm_default_channel";
     private static final String DEFAULT_NOTIFICATION_CHANNEL_NAME = "Weather";
+    private final Context context;
+
+    public FirebaseHelper(final Context context) {
+        this.context = context;
+    }
 
     public void init(final Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
