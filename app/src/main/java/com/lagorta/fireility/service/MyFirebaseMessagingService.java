@@ -1,5 +1,7 @@
 package com.lagorta.fireility.service;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,7 +21,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      * @param remoteMessage Object representing the message received from Firebase Cloud Messaging.
      */
     @Override
-    public void onMessageReceived(RemoteMessage remoteMessage) {
+    public void onMessageReceived(final RemoteMessage remoteMessage) {
         // [START_EXCLUDE]
         // There are two types of messages data messages and notification messages. Data messages
         // are handled
@@ -55,7 +57,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Toast.makeText(this, "Message Notification Body: " + remoteMessage.getNotification().getBody(), Toast.LENGTH_LONG).show();
+
+            Handler handler = new Handler(Looper.getMainLooper());
+            handler.post(new Runnable() {
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "Message Notification Body: " + remoteMessage.getNotification().getBody(), Toast.LENGTH_LONG).show();
+                }
+            });
+
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
