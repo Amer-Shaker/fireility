@@ -1,10 +1,14 @@
 package com.lagorta.fireility.service;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Context;
+import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.work.OneTimeWorkRequest;
@@ -12,6 +16,7 @@ import androidx.work.WorkManager;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.lagorta.fireility.R;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -113,23 +118,26 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             public void run() {
-                new AlertDialog.Builder(getApplicationContext())
-                        .setTitle("Delete entry")
-                        .setMessage("Are you sure you want to delete this entry?")
-
-                        // Specifying a listener allows you to take an action before dismissing the dialog.
-                        // The dialog is automatically dismissed when a dialog button is clicked.
-                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Continue with delete operation
-                            }
-                        })
-
-                        // A null listener allows the button to dismiss the dialog and take no further action.
-                        .setNegativeButton(android.R.string.no, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();            }
+                showCustomPopupMenu();
+            }
         });
+    }
+
+    private void showCustomPopupMenu() {
+        WindowManager windowManager2 = (WindowManager) getSystemService(WINDOW_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.activity_main, null);
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT);
+
+        params.gravity = Gravity.CENTER | Gravity.CENTER;
+        params.x = 0;
+        params.y = 0;
+        windowManager2.addView(view, params);
     }
 
     /**
