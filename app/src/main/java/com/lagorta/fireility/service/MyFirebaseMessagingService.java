@@ -45,25 +45,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use WorkManager.
-                scheduleJob();
-            } else {
-                // Handle message within 10 seconds
-                handleNow();
-            }
-        }
-
-        // Check if message contains a notification payload.
-        if (remoteMessage.getNotification() != null) {
 
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
                 public void run() {
-                    // Toast.makeText(getApplicationContext(), "Message Notification Body: " + remoteMessage.getNotification().getBody(), Toast.LENGTH_LONG).show();
-
-
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
                     builder1.setMessage("Write your message here.");
                     builder1.setCancelable(true);
@@ -86,9 +71,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
-
                 }
             });
+        }
+
+        // Check if message contains a notification payload.
+        if (remoteMessage.getNotification() != null) {
+
+//                Handler handler = new Handler(Looper.getMainLooper());
+//                handler.post(new Runnable() {
+//                    public void run() {
+//                        // Toast.makeText(getApplicationContext(), "Message Notification Body: " + remoteMessage.getNotification().getBody(), Toast.LENGTH_LONG).show();
+//
+//                    }
+//                });
 
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
