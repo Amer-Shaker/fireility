@@ -1,15 +1,9 @@
 package com.lagorta.fireility.service;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -18,7 +12,6 @@ import androidx.work.WorkManager;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.lagorta.fireility.R;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
@@ -130,22 +123,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //        });
     }
 
-    private void showCustomPopupMenu() {
-        WindowManager windowManager2 = (WindowManager) getSystemService(WINDOW_SERVICE);
-        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(R.layout.activity_main, null);
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
-
-        params.gravity = Gravity.CENTER | Gravity.CENTER;
-        params.x = 0;
-        params.y = 0;
-        windowManager2.addView(view, params);
-    }
 
     /**
      * Persist token to third-party servers.
