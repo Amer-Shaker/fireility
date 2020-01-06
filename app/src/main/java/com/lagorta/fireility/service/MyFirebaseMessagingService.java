@@ -49,7 +49,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
                 public void run() {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(MyFirebaseMessagingService.this);
                     builder1.setMessage("Write your message here.");
                     builder1.setCancelable(true);
 
