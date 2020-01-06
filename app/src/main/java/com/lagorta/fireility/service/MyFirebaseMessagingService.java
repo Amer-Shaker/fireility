@@ -1,12 +1,11 @@
 package com.lagorta.fireility.service;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.appcompat.app.AlertDialog;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
@@ -62,7 +61,32 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
                 public void run() {
-                    Toast.makeText(getApplicationContext(), "Message Notification Body: " + remoteMessage.getNotification().getBody(), Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getApplicationContext(), "Message Notification Body: " + remoteMessage.getNotification().getBody(), Toast.LENGTH_LONG).show();
+
+
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
+                    builder1.setMessage("Write your message here.");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
                 }
             });
 
@@ -108,18 +132,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void handleNow() {
         Log.d(TAG, "Short lived task is done.");
         //showCustomPopupMenu();
-        Intent intent = new Intent("myFunction");
-        // add data
-        intent.putExtra("value1", "x");
-        intent.putExtra("value2", "y");
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-
-//        Handler handler = new Handler(Looper.getMainLooper());
-//        handler.post(new Runnable() {
-//            public void run() {
-//                showCustomPopupMenu();
-//            }
-//        });
     }
 
 

@@ -1,9 +1,7 @@
 package com.lagorta.fireility.view;
 
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -28,31 +26,8 @@ public class MainActivity extends AppCompatActivity {
             String t = intent.getStringExtra("value1");
             String t1 = intent.getStringExtra("value2");
             //alert data here
-            showCustomPopupMenu();
         }
     };
-
-
-    private void showCustomPopupMenu() {
-        // inflate the layout of the popup window
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Delete entry")
-                .setMessage("Are you sure you want to delete this entry?")
-
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
-                    }
-                })
-
-                // A null listener allows the button to dismiss the dialog and take no further action.
-                .setNegativeButton(android.R.string.no, null)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
-    }
-
 
     @Override
     public void onResume() {
