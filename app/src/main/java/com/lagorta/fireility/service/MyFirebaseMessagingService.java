@@ -56,7 +56,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         // Check if message contains a notification payload.
-        if (remoteMessage.getNotification() != null && remoteMessage.getData().isEmpty()) {
+        if (remoteMessage.getNotification() != null) {
 
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
