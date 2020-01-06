@@ -1,6 +1,7 @@
 package com.lagorta.fireility.service;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
@@ -113,14 +115,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
      */
     private void handleNow() {
         Log.d(TAG, "Short lived task is done.");
+        //showCustomPopupMenu();
+        Intent intent = new Intent("myFunction");
+        // add data
+        intent.putExtra("value1", "x");
+        intent.putExtra("value2", "y");
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 
-
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            public void run() {
-                showCustomPopupMenu();
-            }
-        });
+//        Handler handler = new Handler(Looper.getMainLooper());
+//        handler.post(new Runnable() {
+//            public void run() {
+//                showCustomPopupMenu();
+//            }
+//        });
     }
 
     private void showCustomPopupMenu() {
